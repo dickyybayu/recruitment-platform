@@ -6,7 +6,7 @@ import {
 
 import { env } from "../config/env.js";
 
-export const AUTH_COOKIE_NAME = "access_token";
+export const AUTH_COOKIE_NAME = env.AUTH_COOKIE_NAME;
 
 export function setAuthCookie(
   c: Context,
@@ -19,14 +19,13 @@ export function setAuthCookie(
     {
       httpOnly: true,
 
-      secure:
-        env.NODE_ENV === "production",
+      secure: env.AUTH_COOKIE_SECURE,
 
-      sameSite: "Lax",
+      sameSite: env.AUTH_COOKIE_SAME_SITE,
 
       path: "/",
 
-      maxAge: 60 * 60 * 24,
+      maxAge: env.AUTH_COOKIE_MAX_AGE_SECONDS,
     },
   );
 }

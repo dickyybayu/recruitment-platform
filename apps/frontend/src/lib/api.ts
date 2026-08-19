@@ -1,6 +1,16 @@
-const API_URL =
-  process.env.NEXT_PUBLIC_API_URL ??
-  "http://localhost:3001";
+function getApiUrl() {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+  if (apiUrl) {
+    return apiUrl;
+  }
+
+  if (process.env.NODE_ENV === "development") {
+    return "http://localhost:3001";
+  }
+
+  throw new Error("NEXT_PUBLIC_API_URL is required");
+}
 
 type ApiOptions =
   Omit<RequestInit, "body"> & {
@@ -28,7 +38,7 @@ export async function apiFetch<T>(
   options: ApiOptions = {},
 ): Promise<T> {
   const response = await fetch(
-    `${API_URL}${path}`,
+    `${getApiUrl()}${path}`,
     {
       ...options,
 

@@ -54,6 +54,11 @@ PORT=3001
 DATABASE_URL=postgresql://USER:PASSWORD@localhost:5432/DATABASE
 JWT_SECRET=your-secret-at-least-32-characters
 FRONTEND_URL=http://localhost:3000
+AUTH_COOKIE_NAME=access_token
+AUTH_COOKIE_SAME_SITE=Lax
+AUTH_COOKIE_MAX_AGE_SECONDS=86400
+# Optional. Defaults to true when NODE_ENV=production, false otherwise.
+# AUTH_COOKIE_SECURE=true
 ```
 
 Frontend example: `apps/frontend/.env.example`
