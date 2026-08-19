@@ -322,3 +322,11 @@ Services:
 - PostgreSQL: `localhost:5432`
 
 The backend container waits for PostgreSQL, runs migrations, runs the idempotent seed script, then starts the API. The frontend image is built with `NEXT_PUBLIC_API_URL=http://localhost:3001` because browser requests are made from the host browser to the published backend port.
+
+## Deployment
+
+- Frontend: [Vercel](https://recruitment-platform-frontend-alpha.vercel.app)
+- Backend: [Back4App](https://recruitmentplatformapi-5z2aucoz.b4a.run)
+- Database: Neon PostgreSQL
+
+> **Note:** The Back4App backend currently uses a temporary URL and may become unavailable after it expires.
